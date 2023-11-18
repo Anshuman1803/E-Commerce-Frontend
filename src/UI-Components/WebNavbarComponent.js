@@ -12,10 +12,7 @@ function WebNavbarComponent() {
         <NavLink className='navItem' to={`products/headphone`}> Headphone</NavLink>
       </div>
 
-      <div className="searchContainer">
-        <input type="text" name='SearctProduct' id='SearchProduct'  placeholder='Search Here For Product' />
-        <button className='searchProductBtn'><i className="fa-solid fa-magnifying-glass searchProductBtnIcon"></i></button>
-      </div>
+     
     </nav>
   )
 }

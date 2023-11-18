@@ -34,6 +34,11 @@ function ProductPage() {
 
 
     const handleFliterClick = (e) => {
+        const filterContainer = document.querySelector('.filterContainer');
+        const filterIcon = document.querySelector('.filterIcon');
+        filterContainer.classList.remove("activeFilterContainer");
+        filterIcon.classList.remove("fa-xmark");
+
         if (e.target.textContent === "All") {
             setProductData(productAllData.filter((product) => currentCategory === 'All' ? product : product.category === currentCategory))
         } else {
@@ -58,6 +63,7 @@ function ProductPage() {
 
 
             </aside>
+
             <ShowProduct product={productData} />
         </section>
     )
@@ -67,9 +73,18 @@ export default ProductPage
 
 
 function ShowProduct(props) {
-    let productData = props.product
+    let productData = props.product;
+
+    const handleFilterClick = (e) => {
+        const filterContainer = document.querySelector('.filterContainer');
+        const filterIcon = document.querySelector('.filterIcon');
+        filterContainer.classList.toggle("activeFilterContainer");
+        filterIcon.classList.toggle("fa-xmark")
+    }
     return (
-        <div className="productContainer  ShowProducta-ProductContainer">
+
+        <div className="productContainer  ShowProduct-ProductContainer">
+            <button className='filterProductButton' onClick={handleFilterClick}><i className="fa-solid fa-filter filterIcon"></i></button>
             {
                 productData.length > 0 ? productData.map((product) => {
                     return <div className='productBox' key={product.id}>

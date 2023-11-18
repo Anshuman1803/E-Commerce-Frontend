@@ -44,105 +44,8 @@
     width: 55px;
 }
 
-.hamNavButton {
-    border: 0.5px solid #130f40;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    cursor: pointer;
-    display: none;
-}
-
-.cartIconContainer {
-    height: 100%;
-    width: 90px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #130f40;
-}
-
-.cartIcon {
-    font-size: 25px;
-    position: relative;
-    top: 5px;
-}
-
-.CartproductCounterLabel {
-    border: none;
-    outline: none;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    width: 25px;
-    height: 25px;
-    font-size: 18px;
-    text-align: center;
-    background-color: #ff2400;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    color: white;
-}
-
-.cartIconContainer:hover {
-    cursor: pointer;
-    background-color: #ebf6f7;
-}
-
-/* Navbar of big screen */
-.webNavbar {
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #130f4080;
-    height: 90px;
-    padding: 0em 0.5em;
-    background-color: #f1f9ec;
-}
-
-.navLinksContainer {
-    /* border: 2px solid red; */
-    height: 100%;
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.navItem {
-    color: #130f40;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.active {
-    color: #ff2400;
-}
-
-.navItem:hover {
-    cursor: pointer;
-    color: #ff2400;
-}
-
 .searchContainer {
-    width: 400px;
+    width: 60%;
     height: 50px;
     position: relative;
     border-radius: 100px;
@@ -186,6 +89,201 @@
 .searchProductBtn:hover .searchProductBtnIcon {
     transform: scale(0.89);
 }
+
+.userContainer {
+    width: 150px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.userBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.userBox:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.userBox:hover .userIcon {
+    color: tomato;
+}
+
+.userIcon {
+    font-size: 30px;
+}
+
+.UserName {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    display: grid;
+    place-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.itemCountLabel {
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #ff2400;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: white;
+}
+
+.userDropDown {
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    position: absolute;
+    background-color: #f1f9ec;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 300px;
+    top: 100%;
+    right: 0%;
+    height: 200px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    display: none;
+
+}
+
+.dropDownItem {
+    text-decoration: none;
+    width: 100%;
+    height: 65px;
+    border: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    text-decoration: none;
+}
+
+.dropDownnitemIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.itemLabel {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+li:nth-child(3) {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dropDownItem:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: tomato;
+}
+
+.dropDownItem:nth-child(3):hover {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dropDownItem:hover .itemLabel {
+    font-weight: 500;
+}
+
+.userContainer:hover .userDropDown {
+    display: flex;
+    z-index: 5;
+}
+
+.hamNavButton {
+    border: 0.5px solid #130f40;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+
+/* Navbar of big screen */
+.webNavbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #130f4080;
+    height: 90px;
+    padding: 0em 0.5em;
+    background-color: #f1f9ec;
+}
+
+.navLinksContainer {
+    /* border: 2px solid red; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navItem {
+    color: #130f40;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.active {
+    color: #ff2400;
+}
+
+.navItem:hover {
+    cursor: pointer;
+    color: #ff2400;
+}
+
 
 /* Home Section  */
 
@@ -268,6 +366,8 @@
     padding: 1em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    justify-content: center;
+    align-content: center;
     gap: 20px;
 }
 
@@ -542,11 +642,16 @@
 }
 
 
-.ShowProducta-ProductContainer {
+.ShowProduct-ProductContainer {
     position: relative;
     width: calc(100% - 300px);
     min-height: 570px;
     background-color: rgba(255, 255, 255, 0.622);
+    /* margin-top: 80px; */
+}
+
+.filterProductButton {
+    display: none;
 }
 
 .outOfStockMessage {
@@ -724,18 +829,6 @@
 }
 
 @media screen and (max-width: 901px) {
-    .webNavbar {
-        display: none;
-    }
-
-    .App--Header {
-        background-color: #f1f9ec;
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 3;
-    }
-
     .SliderContainer {
         height: 300px;
     }
@@ -754,15 +847,91 @@
     }
 }
 
+@media screen and (max-width: 601px) {
+
+    .webNavbar,
+    .searchContainer,
+    .userContainer {
+        display: none;
+    }
+
+    .App--Header {
+        background-color: #f1f9ec;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        padding: 0em 0.6em;
+    }
+
+    .hamNavButton {
+        display: flex;
+    }
+
+}
+
+
 @media screen and (max-width: 700px) {
 
     .filterContainer {
         display: none;
     }
 
-    .ShowProducta-ProductContainer {
+    .ShowProduct-ProductContainer {
         width: 100%;
     }
+
+    .filterProductButton {
+        background-color: #ff2400;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        color: white;
+        border: none;
+        outline: none;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        z-index: 3;
+        top: 0px;
+        right: 5px;
+        text-transform: capitalize;
+        font-weight: 500;
+        font-size: 20px;
+        display: block;
+    }
+
+    .filterProductButton i {
+        color: white;
+    }
+
+    .filterProductButton:hover {
+        cursor: pointer;
+    }
+
+    .filterProductButton:hover i {
+        transform: scale(1.2);
+    }
+
+    .activeFilterContainer {
+        display: block;
+        position: absolute;
+        height: 100%;
+        background-color: #f1f9ec;
+        z-index: 2;
+        animation: detailsAnimation 0.6s ease-in-out;
+        opacity: 1;
+    }
+
+    @keyframes detailsAnimation {
+        from {
+          opacity: 0;
+        }
+      
+        to {
+          opacity: 1;
+        }
+      
+      }
 }
 
 @media screen and (max-width: 500px) {
@@ -785,5 +954,8 @@
     .addToCartButton {
         width: 150px;
         height: 45px;
+    }
+    .activeFilterContainer {
+        width: 100%;
     }
 }
