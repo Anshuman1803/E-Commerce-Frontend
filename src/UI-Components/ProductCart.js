@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 function ProductCart() {
-  const {cartItems} = useSelector((state)=> state.cart);
+  // const {cartItems} = useSelector((state)=> state.cart);
   return (
     < >
       {
