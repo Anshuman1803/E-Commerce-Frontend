@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Loader from './CompoLoader';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Slice/ReduxCartSlice";
 
 function ProductFullDetailsComponent() {
   const ProductID = useParams().title.split("-")[1];
   const [currentProduct, setCurrentProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setIsLoading(true)
     axios.get(`http://localhost:5000/product/${ProductID}`).then((response) => {
@@ -16,7 +19,9 @@ function ProductFullDetailsComponent() {
     })
 
   }, [ProductID]);
-
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
   return (
     <section className='ProductFullDetailsContainer'>
       {
@@ -44,8 +49,7 @@ function ProductFullDetailsComponent() {
               <span className="DiscountPercentage">{currentProduct[0]?.discountPercentage}%off</span>
             </p>
             <div className="itemCountContainer">
-              <button className='countButton'>-</button><span className='itemCount'>0</span> <button className='countButton'>+</button>
-              <button className='addToCartButton'>Add To Cart</button>
+              <button className='addToCartButton' onClick={() => handleAddToCart(currentProduct[0])}>Add To Cart</button>
             </div>
 
 

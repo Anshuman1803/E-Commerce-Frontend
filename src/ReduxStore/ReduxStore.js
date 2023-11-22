@@ -1,10 +1,10 @@
 // import { createContext, useState } from "react";
 
 import { configureStore } from "@reduxjs/toolkit";
-import ReduxStoreSlice from "../Slice/ReduxSlice";
+import CartSliceReducer from "../Slice/ReduxCartSlice";
 const ReduxStore = configureStore({
     reducer :{
-        store : ReduxStoreSlice.reducer
+       cart : CartSliceReducer
     }
 });
 

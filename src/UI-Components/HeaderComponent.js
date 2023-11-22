@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../Logo.png'
+import { useSelector } from 'react-redux'
 
 function HeaderComponent() {
+  const {cartTotalQuantity}= useSelector((state)=>state.cart);
   return (
     <header className='App--Header'>
       <img src={Logo} alt="AppLogo" className='AppLogo' />
@@ -16,7 +18,7 @@ function HeaderComponent() {
         <div className="userBox">
           <i className="fa-solid fa-user-tie userIcon"></i>
           <h2 className='UserName'>M</h2>
-          <span className='itemCountLabel'>0</span>
+          <span className='itemCountLabel'>{cartTotalQuantity}</span>
         </div>
         <ul className="userDropDown">
           <li className="dropDownItem"><i className="fa-solid fa-user-tie dropDownnitemIcon"></i> <span className='itemLabel'>User Profile</span> </li>

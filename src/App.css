@@ -27,21 +27,22 @@
     width: 100%;
     background-color: #f1f9ec;
 }
+
 .loaderContainer {
     background-color: transparent;
     position: absolute;
     height: 70%;
     width: 100%;
-  }
-  
-  .ballContainer {
+}
+
+.ballContainer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  
-  .loaderContainer div.ball {
+}
+
+.loaderContainer div.ball {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -49,45 +50,47 @@
     display: inline-block;
     position: relative;
     animation: jump 1s infinite;
-  }
-  
-  .loaderContainer div.ball1 {
+}
+
+.loaderContainer div.ball1 {
     background-color: #ED0800;
-  }
-  
-  .loaderContainer div.ball2 {
+}
+
+.loaderContainer div.ball2 {
     background-color: #ED0800;
     animation-delay: 0.15s;
-  }
-  
-  .loaderContainer div.ball3 {
+}
+
+.loaderContainer div.ball3 {
     background-color: #ED0800;
     animation-delay: 0.3s;
-  }
-  
-  .loaderContainer div.ball4 {
+}
+
+.loaderContainer div.ball4 {
     background-color: #ED0800;
     animation-delay: 0.45s;
-  }
-  
-  .loaderContainer div.ball5 {
+}
+
+.loaderContainer div.ball5 {
     background-color: #ED0800;
     animation-delay: 0.6s;
     margin-right: 10px;
-  }
-  @keyframes jump {
+}
+
+@keyframes jump {
     0% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
-  
+
     50% {
-      transform: translateY(-20px);
+        transform: translateY(-20px);
     }
-  
+
     100% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
-  }
+}
+
 /* Header */
 .App--Header {
     border-bottom: 1px solid #130f4080;
@@ -889,6 +892,85 @@ li:nth-child(3) {
     border-radius: 10px;
 }
 
+.cartItems--Container {
+    width: 100%;
+    min-height: 555px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.emptyCartMessage {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-60%, -60%);
+    font-size: 40px;
+    font-weight: 600;
+    color: #ED0800;
+}
+
+.cartItemBox {
+    border: 2px solid red;
+    width: calc(100% - 350px);
+}
+
+.cartItem-PriceBox {
+    border-radius: 5px;
+    /* border: 2px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    width: 350px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.PriceBox--heading {
+    color: #ED0800;
+    width: 100%;
+    border-bottom: 2px solid #130f406e;
+    padding: 0.5em 1em;
+    font-weight: 600;
+    font-size: 25px;
+    text-transform: capitalize;
+}
+
+.PriceBox-Items {
+    margin: 10px 0px;
+    width: 100%;
+    padding: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0em 0.5em;
+    font-weight: 600;
+    font-size: 22px;
+    border: 1px solid #0605143f;
+}
+
+.PriceBox-Items-Label {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.checkOutButton {
+    margin: 10px 0px;
+    width: 200px;
+    padding: 0.8em;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #33A0FF;
+    color: #130f40;
+}
+
 @media screen and (max-width: 901px) {
     .SliderContainer {
         height: 300px;
@@ -985,14 +1067,14 @@ li:nth-child(3) {
 
     @keyframes detailsAnimation {
         from {
-          opacity: 0;
+            opacity: 0;
         }
-      
+
         to {
-          opacity: 1;
+            opacity: 1;
         }
-      
-      }
+
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -1016,6 +1098,7 @@ li:nth-child(3) {
         width: 150px;
         height: 45px;
     }
+
     .activeFilterContainer {
         width: 100%;
     }
