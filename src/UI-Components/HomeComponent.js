@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Loader from '../UI-Components/CompoLoader'
 
 let firstSlider = [
   { slidingImg: 'https://images.samsung.com/latin_en/smartphones/galaxy-s23/images/galaxy-s23-highlights-design-kv-end-s.jpg' },
@@ -17,12 +18,20 @@ let firstSlider = [
 ];
 
 function HomeComponent() {
-  const productData = useSelector((state) => state.store);
-  const navigateTo = useNavigate();
-  // console.log(productData)
+  const [productData, setProductData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [current, setCurrent] = useState(0);
+  const navigateTo = useNavigate();
+
   const length = firstSlider.length;
 
+  useEffect(() => {
+    setIsLoading(true)
+    axios.get("http://localhost:5000/").then((response) => {
+      setProductData(response.data);
+      setIsLoading(false)
+    });
+  }, [])
   let prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1)
   }
@@ -31,15 +40,12 @@ function HomeComponent() {
     setCurrent(current === length - 1 ? 0 : current + 1)
   }
 
-  // productData.reduce((data, product)=>{
-  //  if(data.includes(productData))
-  // }, [])
-  // useEffect(() => {
-  //   const slideInterval = setInterval(() => {
-  //     current === length - 1 ? setCurrent(0) : setCurrent(current + 1);
-  //   }, 3000)
-  //   return () => clearInterval(slideInterval)
-  // }, [current, length])
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      current === length - 1 ? setCurrent(0) : setCurrent(current + 1);
+    }, 3000)
+    return () => clearInterval(slideInterval)
+  }, [current, length])
 
 
   return (
@@ -61,166 +67,168 @@ function HomeComponent() {
       <div className="bestSellerContainer">
         <h1 className='containerHeading'>Best Seller</h1>
 
-        <div className="productContainer">
+        {
+          isLoading ?<Loader /> : <div className="productContainer">
 
-          <div className='productBox'>
-            <img src={productData[0].images[0]} alt="" className={`${productData[0].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[0].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[0].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[0]?.images[0]} alt="" className={`${productData[0]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[0]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[0]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[0].Dprice}</span>
-                <span className="Aprice">₹{productData[0].Aprice}</span>
-                <span className="DiscountPercentage">{productData[0].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[0]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[0]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[0]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[0]?.title.slice(0, 18)}-${productData[0]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[0].title.slice(0,18)}-${productData[0].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[5].images[0]} alt="" className={`${productData[0].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[5].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[5].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[5]?.images[0]} alt="" className={`${productData[0]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[5]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[5]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[5].Dprice}</span>
-                <span className="Aprice">₹{productData[5].Aprice}</span>
-                <span className="DiscountPercentage">{productData[5].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[5]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[5]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[5]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[5]?.title.slice(0, 18)}-${productData[5]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[5].title.slice(0,18)}-${productData[5].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[11].images[0]} alt="" className={`${productData[11].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[11].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[11].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[11]?.images[0]} alt="" className={`${productData[11]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[11]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[11]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[11].Dprice}</span>
-                <span className="Aprice">₹{productData[11].Aprice}</span>
-                <span className="DiscountPercentage">{productData[0].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[11]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[11]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[0]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[11]?.title.slice(0, 18)}-${productData[11]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[11].title.slice(0,18)}-${productData[11].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[15].images[0]} alt="" className={`${productData[15].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[15].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[15].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[15]?.images[0]} alt="" className={`${productData[15]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[15]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[15]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[15].Dprice}</span>
-                <span className="Aprice">₹{productData[15].Aprice}</span>
-                <span className="DiscountPercentage">{productData[15].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[15]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[15]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[15]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[15]?.title.slice(0, 18)}-${productData[15]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[15].title.slice(0,18)}-${productData[15].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[16].images[0]} alt="" className={`${productData[16].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[16].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[16].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[16]?.images[0]} alt="" className={`${productData[16]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[16]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[16]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[16].Dprice}</span>
-                <span className="Aprice">₹{productData[16].Aprice}</span>
-                <span className="DiscountPercentage">{productData[16].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[16]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[16]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[16]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[16]?.title.slice(0, 18)}-${productData[16]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[16].title.slice(0,18)}-${productData[16].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[21].images[0]} alt="" className={`${productData[21].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[21].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[21].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[21]?.images[0]} alt="" className={`${productData[21]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[21]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[21]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[21].Dprice}</span>
-                <span className="Aprice">₹{productData[21].Aprice}</span>
-                <span className="DiscountPercentage">{productData[21].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[21]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[21]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[21]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[21]?.title.slice(0, 18)}-${productData[21]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[21].title.slice(0,18)}-${productData[21].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[29].images[0]} alt="" className={`${productData[29].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[29].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[29].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[29]?.images[0]} alt="" className={`${productData[29]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[29]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[29]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[29].Dprice}</span>
-                <span className="Aprice">₹{productData[29].Aprice}</span>
-                <span className="DiscountPercentage">{productData[29].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[29]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[29]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[29]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[29]?.title.slice(0, 18)}-${productData[29]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[29].title.slice(0,18)}-${productData[29].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[31].images[0]} alt="" className={`${productData[31].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[31].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[31].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[31]?.images[0]} alt="" className={`${productData[31]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[31]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[31]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[31].Dprice}</span>
-                <span className="Aprice">₹{productData[31].Aprice}</span>
-                <span className="DiscountPercentage">{productData[31].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[31]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[31]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[31]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[31]?.title.slice(0, 18)}-${productData[31]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[31].title.slice(0,18)}-${productData[31].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[36].images[0]} alt="" className={`${productData[36].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[36].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[36].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[36]?.images[0]} alt="" className={`${productData[36]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[36]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[36]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[36].Dprice}</span>
-                <span className="Aprice">₹{productData[36].Aprice}</span>
-                <span className="DiscountPercentage">{productData[29].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[36]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[36]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[29]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[36]?.title.slice(0, 18)}-${productData[36]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[36].title.slice(0,18)}-${productData[36].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
-          </div>
 
-          <div className='productBox'>
-            <img src={productData[43].images[0]} alt="" className={`${productData[43].category}Image CommonImage`} />
-            <span className='productRatingLabel'>{productData[43].rating}<i className="fa-solid fa-star"></i></span>
-            <div className="productDetailsContainer">
-              <p className="productTitle">{productData[43].title.slice(0, 20)}...</p>
+            <div className='productBox'>
+              <img src={productData[43]?.images[0]} alt="" className={`${productData[43]?.category}Image CommonImage`} />
+              <span className='productRatingLabel'>{productData[43]?.rating}<i className="fa-solid fa-star"></i></span>
+              <div className="productDetailsContainer">
+                <p className="productTitle">{productData[43]?.title.slice(0, 20)}...</p>
 
-              <div className="productPriceBox">
-                <span className="Dprice">₹{productData[43].Dprice}</span>
-                <span className="Aprice">₹{productData[43].Aprice}</span>
-                <span className="DiscountPercentage">{productData[43].discountPercentage}%off</span>
+                <div className="productPriceBox">
+                  <span className="Dprice">₹{productData[43]?.Dprice}</span>
+                  <span className="Aprice">₹{productData[43]?.Aprice}</span>
+                  <span className="DiscountPercentage">{productData[43]?.discountPercentage}%off</span>
+                </div>
+                <Link to={`/product/${productData[43]?.title.slice(0, 18)}-${productData[43]?.id}`} className='viewProductDetailsLink'>View </Link>
               </div>
-              <Link to={`/product/${productData[43].title.slice(0,18)}-${productData[43].id}`} className='viewProductDetailsLink'>View </Link>
             </div>
+
+
           </div>
-
-
-        </div>
+        }
 
       </div>
 
       <div className="posterContainer">
         <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/ab11f518b2101663.jpeg?q=20" alt="homePoster" className='homePoster' />
-        <button className='showNowButton' onClick={()=>navigateTo('products/All')}>Shop Now</button>
+        <button className='showNowButton' onClick={() => navigateTo('products/All')}>Shop Now</button>
       </div>
 
       <div className="serviceCardContainer">
@@ -248,14 +256,12 @@ function HomeComponent() {
           <h3 className='serviceTitle'>Secure Payment</h3>
           <p className='serviceDes'>Rest easy knowing that your sensitive payment information is safeguarded by state-of-the-art encryption technology. Our Secure Payment Gateway employs the highest security standards to protect your data from unauthorized access.</p>
         </div>
-
-
-
+        
       </div>
 
 
       <div className="featuredProductContainer">
-      <h1 className='containerHeading'>FEATURED PRODUCTS</h1>
+        <h1 className='containerHeading'>FEATURED PRODUCTS</h1>
       </div>
 
     </section>

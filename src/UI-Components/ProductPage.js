@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import Loader from './CompoLoader'
+import axios from 'axios';
 
 function ProductPage() {
     let brandName = [];
-    const productAllData = useSelector((state) => state.store)
     let [productData, setProductData] = useState([]);
+    let [productAllData, setproductAllData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     let currentCategory = useParams().category;
 
-
     useEffect(() => {
-        setProductData(productAllData)
-    }, [productAllData]);
+        setIsLoading(true);
+        axios.get("http://localhost:5000/").then((response) => {
+            setproductAllData(response.data);
+            setIsLoading(false);
+        });
+    }, []);
 
     useEffect(() => {
         setProductData(productAllData.filter((product) => currentCategory === 'All' ? product : product.category === currentCategory))
@@ -63,8 +67,11 @@ function ProductPage() {
 
 
             </aside>
-
-            <ShowProduct product={productData} />
+            <div className="productContainer  ShowProduct-ProductContainer">
+                {
+                    isLoading ? <Loader /> : <ShowProduct product={productData} />
+                }
+            </div>
         </section>
     )
 }
@@ -83,7 +90,7 @@ function ShowProduct(props) {
     }
     return (
 
-        <div className="productContainer  ShowProduct-ProductContainer">
+        <>
             <button className='filterProductButton' onClick={handleFilterClick}><i className="fa-solid fa-filter filterIcon"></i></button>
             {
                 productData.length > 0 ? productData.map((product) => {
@@ -104,6 +111,6 @@ function ShowProduct(props) {
                 }) : <p className='outOfStockMessage'>Out-Of-Stock</p>
             }
 
-        </div>
+        </>
     );
 }

@@ -27,7 +27,67 @@
     width: 100%;
     background-color: #f1f9ec;
 }
-
+.loaderContainer {
+    background-color: transparent;
+    position: absolute;
+    height: 70%;
+    width: 100%;
+  }
+  
+  .ballContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .loaderContainer div.ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+    display: inline-block;
+    position: relative;
+    animation: jump 1s infinite;
+  }
+  
+  .loaderContainer div.ball1 {
+    background-color: #ED0800;
+  }
+  
+  .loaderContainer div.ball2 {
+    background-color: #ED0800;
+    animation-delay: 0.15s;
+  }
+  
+  .loaderContainer div.ball3 {
+    background-color: #ED0800;
+    animation-delay: 0.3s;
+  }
+  
+  .loaderContainer div.ball4 {
+    background-color: #ED0800;
+    animation-delay: 0.45s;
+  }
+  
+  .loaderContainer div.ball5 {
+    background-color: #ED0800;
+    animation-delay: 0.6s;
+    margin-right: 10px;
+  }
+  @keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-20px);
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
 /* Header */
 .App--Header {
     border-bottom: 1px solid #130f4080;
@@ -347,6 +407,8 @@ li:nth-child(3) {
 .bestSellerContainer,
 .featuredProductContainer {
     background-color: white;
+    position: relative;
+    min-height: 400px;
 }
 
 .containerHeading {
@@ -647,7 +709,6 @@ li:nth-child(3) {
     width: calc(100% - 300px);
     min-height: 570px;
     background-color: rgba(255, 255, 255, 0.622);
-    /* margin-top: 80px; */
 }
 
 .filterProductButton {
