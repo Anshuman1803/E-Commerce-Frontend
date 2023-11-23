@@ -19,6 +19,7 @@ function ProductFullDetailsComponent() {
     })
 
   }, [ProductID]);
+  
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
   }

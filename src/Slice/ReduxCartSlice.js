@@ -18,9 +18,19 @@ const ReduxCartSlice = createSlice({
                 state.cartItems.push(tempProduct);
                 state.cartTotalQuantity++;
             }
-        }
+        },
+
+        increaseQuantity(state, action) {
+            const currentIndex = state.cartItems.findIndex((item)=> item.id === action.payload.id);
+            state.cartItems[currentIndex].cartQuantity += 1
+        },
+        
+        decreaseQuantity(state, action) {
+            const currentIndex = state.cartItems.findIndex((item)=> item.id === action.payload.id);
+            state.cartItems[currentIndex].cartQuantity -= 1
+        },
     }
 });
 
-export const { addToCart } = ReduxCartSlice.actions
+export const { addToCart, increaseQuantity, decreaseQuantity } = ReduxCartSlice.actions
 export default ReduxCartSlice.reducer

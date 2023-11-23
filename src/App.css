@@ -323,7 +323,6 @@ li:nth-child(3) {
 }
 
 .navLinksContainer {
-    /* border: 2px solid red; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -852,25 +851,10 @@ li:nth-child(3) {
     padding: 0em 0.5em;
 }
 
-.countButton {
-    width: 50px;
-    height: 30px;
-    background-color: #130f40;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
-}
 
-.countButton:hover,
 .addToCartButton:hover {
     cursor: pointer;
     background-color: #060514;
-}
-
-.itemCount {
-    font-weight: 500;
-    color: #388e3c;
-    font-size: 20px;
 }
 
 .currentPrduct--discription {
@@ -897,8 +881,9 @@ li:nth-child(3) {
     min-height: 555px;
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
     gap: 10px;
     margin-top: 20px;
 }
@@ -914,19 +899,128 @@ li:nth-child(3) {
 }
 
 .cartItemBox {
-    border: 2px solid red;
-    width: calc(100% - 350px);
+    width: 100%;
+    padding: 1em;
+
+}
+
+.hrLine {
+    border-color: #06051438;
+    border-width: 1px;
+
+}
+
+.itemBox {
+    margin: 10px 0px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+.itemPictureContainer {
+    border-radius: 5px;
+    padding: 0.5em;
+    background-color: white;
+    height: 100%;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemPicture {
+    border-radius: 5px;
+    height: 90%;
+    max-width: 150px;
+}
+.itemDetailsContainer{
+    padding-left: 0.5em;
+    width: calc(100% - 200px);
+    display: grid;
+    grid-template-columns: auto 200px auto 150px;
+    justify-content: space-around;
+    align-content: center;
+    height: 100%;
+}
+.itemBox--itemPrice {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.ItemquantityContainer {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantityButton {
+    width: 50px;
+    height: 100%;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+    background-color: #33A0FF;
+    border: none;
+    outline: none;
+}
+
+.quantityButton:hover {
+    cursor: pointer;
+    background-color: #1d93fa;
+    color: #ff2400;
+}
+
+.itemQuantity {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 100%;
+    font-size: 22px;
+    color: #ff2400;
+    font-weight: 600;
+    text-align: center;
+}
+
+.itemToalPrice {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.itemToalPrice .ToalPrice {
+    font-size: 22px;
+    color: #388e3c;
+    font-weight: 500;
+}
+
+.removeFromCartButton {
+    font-weight: 600;
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #ff2400;
+    width: 100%;
+}
+
+.removeFromCartButton:hover {
+    cursor: pointer;
+    color: #cc3d27;
 }
 
 .cartItem-PriceBox {
     border-radius: 5px;
-    /* border: 2px solid red; */
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-    width: 350px;
-    height: 500px;
+    width: 400px;
+    height: 450px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 20px 0px;
 }
 
 .PriceBox--heading {
@@ -987,6 +1081,10 @@ li:nth-child(3) {
     .Product--pictureContainer,
     .Product--DetailsContainer {
         width: 100%;
+    }
+    .itemDetailsContainer{
+        grid-template-columns: auto 200px ;
+        gap: 20px;
     }
 }
 
