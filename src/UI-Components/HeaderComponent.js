@@ -21,7 +21,7 @@ function HeaderComponent() {
           <span className='itemCountLabel'>{cartTotalQuantity}</span>
         </div>
         <ul className="userDropDown">
-          <li className="dropDownItem"><i className="fa-solid fa-user-tie dropDownnitemIcon"></i> <span className='itemLabel'>User Profile</span> </li>
+          <Link className="dropDownItem" to="/user/register"><i className="fa-solid fa-user-tie dropDownnitemIcon"></i> <span className='itemLabel'>User Profile</span> </Link>
 
           <Link className="dropDownItem" to="/cart"><i className="fa-solid fa-cart-shopping dropDownnitemIcon"></i> <span className='itemLabel'>Cart</span> </Link>
 
