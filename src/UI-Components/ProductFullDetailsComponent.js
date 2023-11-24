@@ -13,7 +13,7 @@ function ProductFullDetailsComponent() {
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get(`http://localhost:5000/product/${ProductID}`).then((response) => {
+    axios.get(`https://e-commerce-backend-sgi7.onrender.com/product/${ProductID}`).then((response) => {
       setCurrentProduct(response.data);
       setIsLoading(false);
     })

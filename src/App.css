@@ -1016,7 +1016,7 @@ li:nth-child(3) {
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     width: 400px;
-    height: 450px;
+    height: 500px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -1063,6 +1063,11 @@ li:nth-child(3) {
     outline: none;
     background-color: #33A0FF;
     color: #130f40;
+}
+.checkOutButton:hover{
+    cursor: pointer;
+    background-color: #1d93fa;
+    transform: scale(0.98);
 }
 
 @media screen and (max-width: 901px) {
@@ -1181,6 +1186,10 @@ li:nth-child(3) {
     .cameracurrentImage {
         width: 100%;
     }
+    .emptyCartMessage {
+      font-size: 30px;
+      top: 50%;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -1200,4 +1209,7 @@ li:nth-child(3) {
     .activeFilterContainer {
         width: 100%;
     }
+    .emptyCartMessage {      
+        font-size: 25px;
+      }
 }
