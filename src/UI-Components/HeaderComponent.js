@@ -5,6 +5,13 @@ import { useSelector } from 'react-redux'
 
 function HeaderComponent() {
   const {cartTotalQuantity}= useSelector((state)=>state.cart);
+
+  const handleHamButtonClick = (e)=>{
+    const navBar = document.querySelector(".sideNavbar");
+    const hamMenuBtn = document.querySelector(".hamNavButton");
+    navBar.classList.toggle("hideTabMobileNavBar");
+    hamMenuBtn.classList.toggle("fa-xmark");
+  }
   return (
     <header className='App--Header'>
       <img src={Logo} alt="AppLogo" className='AppLogo' />
@@ -30,7 +37,7 @@ function HeaderComponent() {
       </div>
 
 
-      <i className="fa-solid fa-bars hamNavButton"></i>
+      <i className="fa-solid fa-bars hamNavButton" onClick={handleHamButtonClick}></i>
 
     </header>
   )

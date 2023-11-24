@@ -9,12 +9,14 @@ import ProductWishlist from "./UI-Components/ProductWishlist";
 import UserForm from "./UserProfileAuth/UserForm";
 import UserLogin from "./UserProfileAuth/UserLogin";
 import UserRegister from "./UserProfileAuth/UserRegister";
+import MobileNavBar from "./UI-Components/MobileNavBar";
 
 function App() {
   return (
     <>
       <HeaderComponent />
       <WebNavbarComponent />
+      <MobileNavBar/>
 
       <Routes>
         <Route path="/" element={<HomeComponent />} />

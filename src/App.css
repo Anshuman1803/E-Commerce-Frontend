@@ -310,6 +310,14 @@ li:nth-child(3) {
 
 
 /* Navbar of big screen */
+.sideNavbar {
+    display: none;
+}
+
+.hideTabMobileNavBar {
+    display: none;
+}
+
 .webNavbar {
     display: flex;
     align-items: center;
@@ -1351,10 +1359,13 @@ input[type="password"] {
         }
 
     }
-       .userFormContainer{
+
+    .userFormContainer {
         width: 90%;
     }
-    .formBox, .registerFormBox{
+
+    .formBox,
+    .registerFormBox {
         width: 95%;
     }
 }
@@ -1372,7 +1383,7 @@ input[type="password"] {
         position: sticky;
         top: 0;
         left: 0;
-        z-index: 3;
+        z-index: 4;
         padding: 0em 0.6em;
     }
 
@@ -1380,6 +1391,88 @@ input[type="password"] {
         display: flex;
     }
 
+    /* Nav bar for Small Screen */
+
+    .sideNavbar {
+        backdrop-filter: blur(30px);
+        background-color: #0605143b;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        z-index: 4;
+        width: 100%;
+        height: 100vh;
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 10px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sideNavbar--userContainer {
+        border-bottom: 1px solid #0605148f;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0em 0.3em;
+    }
+
+    .sideNavbar--cartItemBox {
+        background-color: rgba(255, 255, 255, 0.253);
+        border-radius: 5px;
+        width: 90px;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0em 0.5em;
+        gap: 10px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    .sideNavbar--cartItemBox:hover {
+        cursor: pointer;
+    }
+
+    .sideNavbar--cartItemBox:hover i {
+        transform: scale(1.2);
+        color: #ED0800;
+    }
+
+    .sideNavbar--ItmeCount {
+        font-weight: 600;
+        font-size: 22px;
+    }
+
+    .sideNavbar .navItem {
+        width: 70%;
+        height: 50px;
+        border-radius: 5px;
+        text-align: center;
+        padding: 0.2em 0em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.438);
+    }
+
+    .logOutButton {
+        width: 40%;
+        padding: 0.8em;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        outline: none;
+        background-color: tomato;
+        border-radius: 10px;
+    }
+    .hideTabMobileNavBar{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -1416,10 +1509,16 @@ input[type="password"] {
     .emptyCartMessage {
         font-size: 25px;
     }
-    .userFormContainer{
+
+    .userFormContainer {
         width: 100%;
     }
-    .formBox--heading{
+
+    .formBox--heading {
         font-size: 18px;
+    }
+
+    .sideNavbar .navItem {
+        width: 90%;
     }
 }
