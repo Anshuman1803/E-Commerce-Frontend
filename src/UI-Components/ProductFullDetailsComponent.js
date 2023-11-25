@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Loader from './CompoLoader';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../Slice/ReduxCartSlice";
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 function ProductFullDetailsComponent() {
+  const { isLoggedIn } = useSelector((state) => state.User);
+
   const ProductID = useParams().title.split("-")[1];
   const [currentProduct, setCurrentProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,12 +24,49 @@ function ProductFullDetailsComponent() {
     })
 
   }, [ProductID]);
-  
+
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
+    if (isLoggedIn) {
+      toast.success('Item Added Successfully', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      dispatch(addToCart(product))
+    } else {
+      toast.error('Permission Denied! First Sign In', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+
   }
   return (
     <section className='ProductFullDetailsContainer'>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       {
         isLoading ? <Loader /> : <>
           <div className="Product--pictureContainer">

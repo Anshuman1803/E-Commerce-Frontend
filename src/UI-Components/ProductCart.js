@@ -1,13 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseQuantity, decreaseQuantity, removeProduct } from '../Slice/ReduxCartSlice';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function ProductCart() {
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let totalCartPrice = 0;
   let totalProducts = 0;
-  
+
 
   const handleIncrementQuantity = (id) => {
     dispatch(increaseQuantity({ "id": id }))
@@ -16,12 +18,34 @@ function ProductCart() {
   const handleDecrementQuantity = (id) => {
     dispatch(decreaseQuantity({ "id": id }))
   }
-  const handleRemoveItemClick = (id)=>{
+  const handleRemoveItemClick = (id) => {
     dispatch(removeProduct(id));
+    toast.success('Item Deleted Successfully', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
   return (
     < >
+     <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {
         cartItems.length <= 0 ? <p className='emptyCartMessage'>Cart is Empty</p> :
           <div className='cartItems--Container'>
@@ -47,7 +71,7 @@ function ProductCart() {
                       </div>
 
                       <p className="itemToalPrice">Item Price <span className='ToalPrice'>₹{items.Dprice * items.cartQuantity}</span></p>
-                      <button className='removeFromCartButton' onClick={()=>handleRemoveItemClick(items.id)}>Remove</button>
+                      <button className='removeFromCartButton' onClick={() => handleRemoveItemClick(items.id)}>Remove</button>
                     </div>
 
                   </div>
