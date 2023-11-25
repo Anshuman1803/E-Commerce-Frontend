@@ -14,7 +14,7 @@ function MobileNavBar() {
       <aside className='sideNavbar hideTabMobileNavBar'>
           <div className="sideNavbar--userContainer">
             <Link onClick={handleSideNavItemClick} className="sideNavbar--cartItemBox" to="/cart"><i className="fa-solid fa-cart-shopping "></i> <span className='sideNavbar--ItmeCount'>{cartTotalQuantity}</span></Link>
-            <Link className="sideNavbar--cartItemBox" to="/wishlist"><i className="fa-solid fa-heart"></i> <span className='sideNavbar--ItmeCount'>{cartTotalQuantity}</span></Link>
+            {/* <Link className="sideNavbar--cartItemBox" to="/wishlist"><i className="fa-solid fa-heart"></i> <span className='sideNavbar--ItmeCount'>{cartTotalQuantity}</span></Link> */}
        
       </div>
          <NavLink onClick={handleSideNavItemClick} className='navItem' to={'/'}> Home</NavLink>

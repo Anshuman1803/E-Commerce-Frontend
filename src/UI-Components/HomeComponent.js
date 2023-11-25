@@ -68,7 +68,7 @@ function HomeComponent() {
         <h1 className='containerHeading'>Best Seller</h1>
 
         {
-          isLoading ?<Loader /> : <div className="productContainer">
+          isLoading ? <Loader /> : <div className="productContainer">
 
             <div className='productBox'>
               <img src={productData[0]?.images[0]} alt="" className={`${productData[0]?.category}Image CommonImage`} />
@@ -256,7 +256,7 @@ function HomeComponent() {
           <h3 className='serviceTitle'>Secure Payment</h3>
           <p className='serviceDes'>Rest easy knowing that your sensitive payment information is safeguarded by state-of-the-art encryption technology. Our Secure Payment Gateway employs the highest security standards to protect your data from unauthorized access.</p>
         </div>
-        
+
       </div>
 
 

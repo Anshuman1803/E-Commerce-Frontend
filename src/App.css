@@ -229,7 +229,7 @@
     width: 300px;
     top: 100%;
     right: 0%;
-    height: 200px;
+    max-height: 200px;
     list-style: none;
     display: flex;
     align-items: center;
@@ -270,7 +270,7 @@
     font-size: 18px;
 }
 
-li:nth-child(3) {
+.dropDownItem:last-child{
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -279,11 +279,6 @@ li:nth-child(3) {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.8);
     color: tomato;
-}
-
-.dropDownItem:nth-child(3):hover {
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
 }
 
 .dropDownItem:hover .itemLabel {
@@ -1169,8 +1164,7 @@ li:nth-child(3) {
 }
 
 .inputBox {
-    width: 90%;
-    /* border: 2px solid red; */
+    width: 85%;
     margin: 20px auto 0px auto;
     height: 75px;
     position: relative;
@@ -1274,6 +1268,79 @@ input[type="password"] {
     transform: scale(1.1);
 }
 
+.registrationResponseContainer {
+    position: absolute;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.419);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    top: 0;
+    left: 0px;
+}
+
+.responseContainer {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg {
+    stroke-dasharray: 269.7405090332031px;
+    stroke-dashoffset: 0;
+    animation: heartBeat 1.2s ease-in-out infinite;
+    transform: rotate(-90deg);
+    width: 90px;
+}
+
+.responsebox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.registrationMsg, .loginMsg {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+@keyframes heartBeat {
+    from {
+        stroke-dashoffset: 269.7405090332031px;
+    }
+
+    to {
+        stroke-dashoffset: -269.7405090332031px;
+    }
+}
+
+.responseContainerButton {
+    width: 200px;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #388e3c;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+}
+.responseContainerButton:hover{
+    cursor: pointer;
+    background-color: #207724;
+    transform: scale(0.89);
+}
+
 @media screen and (max-width: 901px) {
     .SliderContainer {
         height: 300px;
@@ -1295,6 +1362,10 @@ input[type="password"] {
     .itemDetailsContainer {
         grid-template-columns: auto 200px;
         gap: 20px;
+    }
+
+    .formBox {
+        width: 90%;
     }
 }
 
@@ -1470,7 +1541,8 @@ input[type="password"] {
         background-color: tomato;
         border-radius: 10px;
     }
-    .hideTabMobileNavBar{
+
+    .hideTabMobileNavBar {
         display: none;
     }
 }

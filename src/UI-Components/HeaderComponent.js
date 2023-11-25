@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../Logo.png'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { userLogOut } from '../Slice/UserSlice';
 
 function HeaderComponent() {
-  const {cartTotalQuantity}= useSelector((state)=>state.cart);
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
+  const { CurrentUser,isLoggedIn } = useSelector((state) => state.User);
+const dispatch = useDispatch();
 
-  const handleHamButtonClick = (e)=>{
+  const handleHamButtonClick = (e) => {
     const navBar = document.querySelector(".sideNavbar");
     const hamMenuBtn = document.querySelector(".hamNavButton");
     navBar.classList.toggle("hideTabMobileNavBar");
@@ -24,15 +27,27 @@ function HeaderComponent() {
       <div className="userContainer">
         <div className="userBox">
           <i className="fa-solid fa-user-tie userIcon"></i>
-          <h2 className='UserName'>M</h2>
+          <h2 className='UserName'>{CurrentUser ? CurrentUser[0].userName.slice(0, 1) : "U"}</h2>
           <span className='itemCountLabel'>{cartTotalQuantity}</span>
         </div>
         <ul className="userDropDown">
-          <Link className="dropDownItem" to="/user/register"><i className="fa-solid fa-user-tie dropDownnitemIcon"></i> <span className='itemLabel'>User Profile</span> </Link>
 
-          <Link className="dropDownItem" to="/cart"><i className="fa-solid fa-cart-shopping dropDownnitemIcon"></i> <span className='itemLabel'>Cart</span> </Link>
 
-          <Link className="dropDownItem" to="/wishlist"><i className="fa-solid fa-heart dropDownnitemIcon"></i> <span className='itemLabel'>Wishlist</span> </Link>
+          {
+            isLoggedIn ?
+              <>
+                <Link className="dropDownItem" to="/user/register"><i className="fa-solid fa-user-tie dropDownnitemIcon"></i> <span className='itemLabel'>{CurrentUser ? CurrentUser[0].userName : "User Profile"}</span> </Link>
+               
+                <Link className="dropDownItem" to="/cart"><i className="fa-solid fa-cart-shopping dropDownnitemIcon"></i> <span className='itemLabel'>Cart</span> </Link>
+
+                <li className="dropDownItem"onClick={()=> dispatch(userLogOut(false))} ><i className="fa-solid fa-right-from-bracket dropDownnitemIcon"></i> <span className='itemLabel'>Log Out</span> </li>
+              </>
+              :
+              <>
+                <Link className="dropDownItem" to="/user/register"><i className="fa-solid fa-user-plus dropDownnitemIcon"></i><span className='itemLabel'>Register</span></Link>
+                <Link className="dropDownItem" to="/user/login"><i className="fa-solid fa-right-to-bracket dropDownnitemIcon"></i><span className='itemLabel'>Log In</span></Link>
+              </>
+          }
         </ul>
       </div>
 

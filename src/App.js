@@ -5,7 +5,6 @@ import ProductFullDetailsComponent from "./UI-Components/ProductFullDetailsCompo
 import WebNavbarComponent from "./UI-Components/WebNavbarComponent";
 import { Routes, Route } from 'react-router-dom'
 import ProductCart from "./UI-Components/ProductCart";
-import ProductWishlist from "./UI-Components/ProductWishlist";
 import UserForm from "./UserProfileAuth/UserForm";
 import UserLogin from "./UserProfileAuth/UserLogin";
 import UserRegister from "./UserProfileAuth/UserRegister";
@@ -23,7 +22,6 @@ function App() {
         <Route path="products/:category" element={<ProductPage />} />
         <Route path="/product/:title" element={<ProductFullDetailsComponent />} />
         <Route path="/cart" element={<ProductCart />} />
-        <Route path="/wishlist" element={<ProductWishlist />} />
         <Route path="/user" element={<UserForm />}>
           <Route path="/user/register" element={<UserRegister />} />
           <Route path="/user/login" element={<UserLogin />} />
