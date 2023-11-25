@@ -27,7 +27,7 @@ const dispatch = useDispatch();
       <div className="userContainer">
         <div className="userBox">
           <i className="fa-solid fa-user-tie userIcon"></i>
-          <h2 className='UserName'>{CurrentUser ? CurrentUser[0].userName.slice(0, 1) : "U"}</h2>
+          <h2 className='UserName'>{CurrentUser ? CurrentUser[0]?.userName?.slice(0, 1) : "U"}</h2>
           <span className='itemCountLabel'>{cartTotalQuantity}</span>
         </div>
         <ul className="userDropDown">
