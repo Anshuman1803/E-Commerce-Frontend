@@ -32,6 +32,7 @@ function HeaderComponent() {
     });
   }
   return (
+    <>
     <header className='App--Header'>
       <img src={Logo} alt="AppLogo" className='AppLogo' />
 
@@ -43,7 +44,7 @@ function HeaderComponent() {
       <div className="userContainer">
         <div className="userBox">
           <i className="fa-solid fa-user-tie userIcon"></i>
-          <h2 className='UserName'>{isLoggedIn ? <>{CurrentUser[0]?.userName.slice(0, 1)}</> : "U"}</h2>
+          <h2 className='UserName'>{CurrentUser?.User[0] ? CurrentUser.User[0].userName.slice(0, 1) : "U"}</h2>
           <span className='itemCountLabel'>{isLoggedIn ? cartTotalQuantity : 0}</span>
         </div>
         <ul className="userDropDown">
@@ -52,12 +53,6 @@ function HeaderComponent() {
           {
             isLoggedIn ?
               <>
-                {/* <Link className="dropDownItem" to="/user/register"><i className="fa-solid fa-user-tie dropDownnitemIcon"></i> <span className='itemLabel'>{isLoggedIn ? <>
-                { 
-                                  CurrentUser ? CurrentUser[0]?.userName :"User Profile"
-
-                }
-                </> : "User Profile"}</span> </Link> */}
 
                 <Link className="dropDownItem" to="/cart"><i className="fa-solid fa-cart-shopping dropDownnitemIcon"></i> <span className='itemLabel'>Cart</span> </Link>
 
@@ -74,7 +69,9 @@ function HeaderComponent() {
 
 
       <i className="fa-solid fa-bars hamNavButton" onClick={handleHamButtonClick}></i>
-      <ToastContainer
+    </header>
+
+     <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
@@ -86,7 +83,7 @@ function HeaderComponent() {
         pauseOnHover
         theme="light"
       />
-    </header>
+    </>
   )
 }
 

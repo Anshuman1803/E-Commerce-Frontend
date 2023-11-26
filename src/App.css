@@ -270,7 +270,7 @@
     font-size: 18px;
 }
 
-.dropDownItem:last-child{
+.dropDownItem:last-child {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -1309,7 +1309,8 @@ svg {
     gap: 50px;
 }
 
-.registrationMsg, .loginMsg {
+.registrationMsg,
+.loginMsg {
     font-size: 30px;
     font-weight: 600;
 }
@@ -1335,7 +1336,8 @@ svg {
     font-size: 20px;
     color: white;
 }
-.responseContainerButton:hover{
+
+.responseContainerButton:hover {
     cursor: pointer;
     background-color: #207724;
     transform: scale(0.89);
@@ -1494,7 +1496,7 @@ svg {
     .sideNavbar--cartItemBox {
         background-color: rgba(255, 255, 255, 0.253);
         border-radius: 5px;
-        width: 90px;
+        width: 20%;
         height: 70%;
         display: flex;
         align-items: center;
@@ -1510,7 +1512,7 @@ svg {
     }
 
     .sideNavbar--cartItemBox:hover i {
-        transform: scale(1.2);
+        transform: scale(0.98);
         color: #ED0800;
     }
 
@@ -1531,7 +1533,8 @@ svg {
         background-color: rgba(255, 255, 255, 0.438);
     }
 
-    .logOutButton {
+    .logButton {
+        text-decoration: none;
         width: 40%;
         padding: 0.8em;
         font-size: 18px;
@@ -1540,6 +1543,30 @@ svg {
         outline: none;
         background-color: tomato;
         border-radius: 10px;
+        text-align: center;
+    }
+
+    .cartItemBox--userBox {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        position: relative;
+    }
+
+    .cartItemBox--userBox .userIcon {
+        font-size: 25px;
+    }
+
+    .cartItemBox--userBox .UserName {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 20px;
+        display: grid;
+        place-items: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
     }
 
     .hideTabMobileNavBar {
@@ -1592,5 +1619,9 @@ svg {
 
     .sideNavbar .navItem {
         width: 90%;
+    }
+
+    .sideNavbar--cartItemBox {
+        width: 30%;
     }
 }
