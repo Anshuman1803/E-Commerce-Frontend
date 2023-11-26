@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function ProductFullDetailsComponent() {
   const { isLoggedIn } = useSelector((state) => state.User);
-
+const [currentImage,setCurrentImage] = useState("");
   const ProductID = useParams().title.split("-")[1];
   const [currentProduct, setCurrentProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +20,7 @@ function ProductFullDetailsComponent() {
     setIsLoading(true)
     axios.get(`http://localhost:5000/product/${ProductID}`).then((response) => {
       setCurrentProduct(response.data);
+      setCurrentImage(response.data[0].images[0])
       setIsLoading(false);
     })
 
@@ -52,8 +53,12 @@ function ProductFullDetailsComponent() {
     }
 
   }
+
+  const handleImageClick = (e)=>{
+    setCurrentImage(e.target.src)
+  }
   return (
-    <section className='ProductFullDetailsContainer'>
+    <>
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -67,42 +72,46 @@ function ProductFullDetailsComponent() {
         theme="light"
       />
 
-      {
-        isLoading ? <Loader /> : <>
-          <div className="Product--pictureContainer">
-            <img src={currentProduct[0]?.images[0]} alt="ProductPoster" className={`${currentProduct[0]?.category}currentImage currentImage`} />
-            <div className="MoreImageContainer">
-              {
-                currentProduct[0]?.images.map((images, index) => {
-                  return <div className='imageBox' key={index}>
-                    <img src={images} alt="MoreImages" className='MoreImage' />
-                  </div>
-                })
-              }
-            </div>
-          </div>
+      <section className='ProductFullDetailsContainer'>
 
-          <div className="Product--DetailsContainer">
-            <h2 className='currentProduct--title'>{currentProduct[0]?.title}</h2>
-            <p className="currentProduct--rating">{currentProduct[0]?.rating}<i className="fa-solid fa-star"></i></p>
 
-            <p className="currentPrduct--price">
-              <span className="Dprice">₹{currentProduct[0]?.Dprice}</span>
-              <span className="Aprice">₹{currentProduct[0]?.Aprice}</span>
-              <span className="DiscountPercentage">{currentProduct[0]?.discountPercentage}%off</span>
-            </p>
-            <div className="itemCountContainer">
-              <button className='addToCartButton' onClick={() => handleAddToCart(currentProduct[0])}>Add To Cart</button>
+        {
+          isLoading ? <Loader /> : <>
+            <div className="Product--pictureContainer">
+              <img src={currentImage} alt="ProductPoster" className={`${currentProduct[0]?.category}currentImage currentImage`} />
+              <div className="MoreImageContainer">
+                {
+                  currentProduct[0]?.images.map((images, index) => {
+                    return <div className='imageBox' key={index}>
+                      <img src={images} alt="MoreImages" className='MoreImage' onClick={handleImageClick} />
+                    </div>
+                  })
+                }
+              </div>
             </div>
 
+            <div className="Product--DetailsContainer">
+              <h2 className='currentProduct--title'>{currentProduct[0]?.title}</h2>
+              <p className="currentProduct--rating">{currentProduct[0]?.rating}<i className="fa-solid fa-star"></i></p>
 
-            <p className='currentPrduct--discription'>
-              Description : {currentProduct[0]?.description}
-            </p>
-          </div>
-        </>
-      }
-    </section>
+              <p className="currentPrduct--price">
+                <span className="Dprice">₹{currentProduct[0]?.Dprice}</span>
+                <span className="Aprice">₹{currentProduct[0]?.Aprice}</span>
+                <span className="DiscountPercentage">{currentProduct[0]?.discountPercentage}%off</span>
+              </p>
+              <div className="itemCountContainer">
+                <button className='addToCartButton' onClick={() => handleAddToCart(currentProduct[0])}>Add To Cart</button>
+              </div>
+
+
+              <p className='currentPrduct--discription'>
+                Description : {currentProduct[0]?.description}
+              </p>
+            </div>
+          </>
+        }
+      </section>
+    </>
   )
 }
 
