@@ -466,6 +466,10 @@
     max-width: 200px;
     max-height: 225px;
 }
+.headphoneImage {
+    max-width: 200px;
+    max-height: 225px;
+}
 
 .productRatingLabel {
     border-top-left-radius: 5px;
@@ -824,7 +828,14 @@
     max-height: 300px;
 }
 
+
 .cameracurrentImage {
+    max-width: 350px;
+    max-height: 400px;
+}
+
+
+.headphonecurrentImage {
     max-width: 350px;
     max-height: 400px;
 }

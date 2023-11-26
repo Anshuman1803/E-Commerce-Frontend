@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function ProductFullDetailsComponent() {
   const { isLoggedIn } = useSelector((state) => state.User);
-const [currentImage,setCurrentImage] = useState("");
+  const [currentImage, setCurrentImage] = useState("");
   const ProductID = useParams().title.split("-")[1];
   const [currentProduct, setCurrentProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +54,7 @@ const [currentImage,setCurrentImage] = useState("");
 
   }
 
-  const handleImageClick = (e)=>{
+  const handleImageClick = (e) => {
     setCurrentImage(e.target.src)
   }
   return (
