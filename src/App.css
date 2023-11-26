@@ -655,6 +655,36 @@
     transform: translatey(-5px)
 }
 
+.featuredProductContainer {
+    border: 2px solid #000;
+}
+
+/* Features slider container*/
+/* ******************************************************************************************** */
+.FeaturedSlider--Container {
+    height: 400px;
+    position: relative;
+    display: flex;
+}
+
+.FeaturedSlider--Container_Box {
+    margin: auto;
+    width: 95%;
+    height: 280px;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+
+}
+
+/* ******************************************************************************************** */
+
 .ProductPageContainer {
     width: 100%;
     min-height: 78.3vh;

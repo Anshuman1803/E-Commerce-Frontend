@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../UI-Components/CompoLoader'
+import FeaturedSlider from './FeaturedSlider';
 
 let firstSlider = [
   { slidingImg: 'https://images.samsung.com/latin_en/smartphones/galaxy-s23/images/galaxy-s23-highlights-design-kv-end-s.jpg' },
@@ -17,6 +18,7 @@ let firstSlider = [
   { slidingImg: 'https://steady-jelly-24109c.netlify.app/assets/images/home/img2.png' }
 ];
 
+
 function HomeComponent() {
   const [productData, setProductData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +33,8 @@ function HomeComponent() {
       setProductData(response.data);
       setIsLoading(false)
     });
-  }, [])
+  }, []);
+
   let prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1)
   }
@@ -262,6 +265,10 @@ function HomeComponent() {
 
       <div className="featuredProductContainer">
         <h1 className='containerHeading'>FEATURED PRODUCTS</h1>
+        {
+          isLoading ? <Loader /> : <FeaturedSlider />
+
+        }
       </div>
 
     </section>
