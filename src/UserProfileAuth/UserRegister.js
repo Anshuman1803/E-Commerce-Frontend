@@ -39,7 +39,7 @@ function UserRegister() {
         } else {
             setIsUserLoading(true);
             setRegistrationMsg("");
-            axios.post("https://e-commerce-backend-sgi7.onrender.com/user/register", userDetails).then((response) => {
+            axios.post("http://localhost:5000/user/register", userDetails).then((response) => {
                 setRegistrationMsg(response.data);
             });
         }

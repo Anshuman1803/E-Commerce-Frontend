@@ -36,7 +36,7 @@ function UserLogin() {
         } else {
             setIsUserLoading(true);
             setloginMsg("");
-            axios.post("https://e-commerce-backend-sgi7.onrender.com/user/login", userDetails).then((response) => {
+            axios.post("http://localhost:5000/user/login", userDetails).then((response) => {
                 setloginMsg(response.data);
                 if(response.data.resMsg=== "User Logged In Successfully"){
                     dispatch(addUser(response.data.UserDetails));
