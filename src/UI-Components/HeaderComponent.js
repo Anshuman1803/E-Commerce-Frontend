@@ -115,17 +115,22 @@ function HeaderComponent() {
       {
         IsSearchVisible && <div className="serachResultContainer">
           {
-            searctProduct?.map((products) => {
-              return <div className='searchResultBox' key={products.id}>
-                <img src={products.images[0]} alt="productImage" className={`SearchProductImage`} />
-                <p className="SearchedProdcut--price">
-                  <span className="Dprice">₹{products.Dprice}</span>
-                  <span className="DiscountPercentage">{products.discountPercentage}%off</span>
-                </p>
-                <p className="searchedProductRating">{products.rating}<i className="fa-solid fa-star"></i></p>
-                <Link to={`/product/${products.title.slice(0, 18)}-${products.id}`} className='searchProductViewLink' onClick={()=>setSearchVisible(false)}>Details </Link>
-              </div>
-            })
+            searctProduct.length > 0 ? <>
+              {
+                searctProduct.map((products) => {
+                  return <div className='searchResultBox' key={products.id}>
+                    <img src={products.images[0]} alt="productImage" className={`SearchProductImage`} />
+                    <p className="SearchedProdcut--price">
+                      <span className="Dprice">₹{products.Dprice}</span>
+                      <span className="DiscountPercentage">{products.discountPercentage}%off</span>
+                    </p>
+                    <p className="searchedProductRating">{products.rating}<i className="fa-solid fa-star"></i></p>
+                    <Link to={`/product/${products.title.slice(0, 18)}-${products.id}`} className='searchProductViewLink' onClick={() => setSearchVisible(false)}>Details </Link>
+                  </div>
+                })
+              }
+
+            </> : <p className='outOfStockMessage'> Product not Found</p>
           }
 
         </div>
