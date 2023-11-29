@@ -18,7 +18,6 @@ function HeaderComponent() {
   const handleOnSearchInput = (e) => {
     setSearch(e.target.value);
   }
-
   const handleSearchButtonClick = (e) => {
     if (search === "") {
       toast.error("Search Box Can't Be Empty", {
@@ -66,7 +65,7 @@ function HeaderComponent() {
         <img src={Logo} alt="AppLogo" className='AppLogo' />
 
         <div className="searchContainer">
-          <input type="text" name='SearctProduct' id='SearchProduct' placeholder='Search Product By Brand Name' onChange={handleOnSearchInput} />
+          <input type="text" name='SearctProduct' id='SearchProduct' placeholder='Search Product By Brand Name' onChange={handleOnSearchInput} value={search} />
           <button className='searchProductBtn' onClick={handleSearchButtonClick}><i className="fa-solid fa-magnifying-glass searchProductBtnIcon"></i></button>
         </div>
 
@@ -114,6 +113,10 @@ function HeaderComponent() {
       />
       {
         IsSearchVisible && <div className="serachResultContainer">
+          <div className='closeSearchResultContainer'>  <i className="fa-solid fa-xmark closeSearchContainerButton" onClick={(e) => {
+            setSearchVisible(false);
+            setSearch("");
+          }}></i></div>
           {
             searctProduct.length > 0 ? <>
               {
@@ -125,7 +128,8 @@ function HeaderComponent() {
                       <span className="DiscountPercentage">{products.discountPercentage}%off</span>
                     </p>
                     <p className="searchedProductRating">{products.rating}<i className="fa-solid fa-star"></i></p>
-                    <Link to={`/product/${products.title.slice(0, 18)}-${products.id}`} className='searchProductViewLink' onClick={() => setSearchVisible(false)}>Details </Link>
+                    <Link to={`/product/${products.title.slice(0, 18)}-${products.id}`} className='searchProductViewLink' onClick={() => {
+                      setSearchVisible(false);setSearch("")}}>Details </Link>
                   </div>
                 })
               }

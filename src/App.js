@@ -9,6 +9,7 @@ import UserForm from "./UserProfileAuth/UserForm";
 import UserLogin from "./UserProfileAuth/UserLogin";
 import UserRegister from "./UserProfileAuth/UserRegister";
 import MobileNavBar from "./UI-Components/MobileNavBar";
+import FooterComponent from "./UI-Components/FooterComponent";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         </Route>
 
       </Routes>
+      <FooterComponent/>
 
     </>
   );

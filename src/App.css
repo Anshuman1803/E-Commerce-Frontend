@@ -170,6 +170,27 @@
     padding-bottom: 4em;
 }
 
+.closeSearchResultContainer {
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0em 1em;
+}
+
+.closeSearchContainerButton {
+    font-size: 20px;
+    cursor: pointer;
+    width: 40px;
+    border: 1px solid #060514;
+    height: 70%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .searchResultBox {
     border: none;
     border-top: 2px solid #0605148c;
@@ -210,12 +231,16 @@
     font-size: 18px;
     color: #388e3c;
 }
-.searchProductViewLink{
+
+.searchProductViewLink {
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
     cursor: pointer;
 }
+
+
+
 .userContainer {
     width: 150px;
     height: 100%;
@@ -1455,6 +1480,67 @@ svg {
     transform: scale(0.89);
 }
 
+
+.App-Footer {
+    background-color: #b89a7059;
+    height: 180px;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  
+  .Footer-Col {
+    padding: 0.5em;
+  }
+  
+  .Footer-col1 {
+    grid-column: 1/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .FooterLogo {
+    width: 90px;
+  }
+  
+  .Footer-col2 {
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+  }
+  
+  .footerLinks {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .footerLinks:hover {
+    cursor: pointer;
+    color: #ea580c;
+  }
+  
+  .Footer-col3 {
+    grid-column: 3/4;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+  }
+  
+  .FooterSIcon {
+    font-size: 25px;
+    color: #1E293B;
+  }
+  
+  .FooterSIcon:hover {
+    cursor: pointer;
+    color: #c44501;
+  }
+
 @media screen and (max-width: 901px) {
     .SliderContainer {
         height: 300px;
@@ -1584,7 +1670,7 @@ svg {
         position: fixed;
         top: 70px;
         left: 0;
-        z-index: 4;
+        z-index: 5;
         width: 100%;
         height: 100vh;
         align-items: center;
@@ -1684,11 +1770,51 @@ svg {
     .hideTabMobileNavBar {
         display: none;
     }
+
     .searchResultBox {
         width: 100%;
         gap: 10px;
         padding: 0em 1em;
     }
+    .App-Footer {
+        height: 250px;
+        grid-template-columns: 100%;
+        grid-template-rows: 80px 90px 80px;
+      }
+    
+      .Footer-col1 {
+        grid-column: 1/2;
+        grid-row: 1/2;
+      }
+    
+      .FooterLogo {
+        width: 60px;
+      }
+    
+      .Footer-col2 {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: center;
+      }
+    
+      .footerLinks {
+        font-size: 16px;
+        font-weight: 800;
+      }
+    
+      .Footer-col3 {
+        grid-column: 1/2;
+        grid-row: 3/4;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        place-items: center;
+      }
+    
+      .FooterSIcon {
+        font-size: 20px;
+      }
 }
 
 @media screen and (max-width: 500px) {
@@ -1741,7 +1867,14 @@ svg {
     .sideNavbar--cartItemBox {
         width: 30%;
     }
-    .searchedProductRating,.DiscountPercentage{
+
+    .searchedProductRating,
+    .DiscountPercentage {
         display: none;
     }
+    .Footer-col2 {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: end;
+      }
+    
 }
