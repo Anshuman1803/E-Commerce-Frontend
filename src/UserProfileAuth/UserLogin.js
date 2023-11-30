@@ -38,8 +38,10 @@ function UserLogin() {
             setloginMsg("");
             axios.post("http://localhost:5000/user/login", userDetails).then((response) => {
                 setloginMsg(response.data);
-                if(response.data.resMsg=== "User Logged In Successfully"){
+                console.log(response.data)
+                if (response.data.resMsg === "User Logged In Successfully") {
                     dispatch(addUser(response.data.UserDetails));
+                    localStorage.setItem(`${userDetails.userEmail}`, `${response.data.Your_TOKEN}` );
                 }
             })
         }
