@@ -18,26 +18,29 @@ function HeaderComponent() {
   const handleOnSearchInput = (e) => {
     setSearch(e.target.value);
   }
-  const handleSearchButtonClick = (e) => {
-    if (search === "") {
-      toast.error("Search Box Can't Be Empty", {
-        position: "bottom-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    } else {
-      setSearchVisible(true);
-      axios(`http://localhost:5000/search/${search}`).then((response) => {
-        setSearctProduct(response.data)
-      });
+  const handleEnterKey = (e) => {
+    if (e.keyCode === 13) {
+      if (search === "") {
+        toast.error("Search Box Can't Be Empty", {
+          position: "bottom-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        setSearchVisible(true);
+        axios(`http://localhost:5000/search/${search}`).then((response) => {
+          setSearctProduct(response.data)
+        });
+      }
     }
 
   }
+
 
   const handleHamButtonClick = (e) => {
     const navBar = document.querySelector(".sideNavbar");
@@ -65,8 +68,8 @@ function HeaderComponent() {
         <img src={Logo} alt="AppLogo" className='AppLogo' />
 
         <div className="searchContainer">
-          <input type="text" name='SearctProduct' id='SearchProduct' placeholder='Search Product By Brand Name' onChange={handleOnSearchInput} value={search} />
-          <button className='searchProductBtn' onClick={handleSearchButtonClick}><i className="fa-solid fa-magnifying-glass searchProductBtnIcon"></i></button>
+          <input type="text" name='SearctProduct' id='SearchProduct' placeholder='Search Product By Brand Name' onChange={handleOnSearchInput} onKeyDown={handleEnterKey} value={search} />
+          {/* <button className='searchProductBtn' onClick={handleSearchButtonClick}><i className="fa-solid fa-magnifying-glass searchProductBtnIcon"></i></button> */}
         </div>
 
         <div className="userContainer">
@@ -129,7 +132,8 @@ function HeaderComponent() {
                     </p>
                     <p className="searchedProductRating">{products.rating}<i className="fa-solid fa-star"></i></p>
                     <Link to={`/product/${products.title.slice(0, 18)}-${products.id}`} className='searchProductViewLink' onClick={() => {
-                      setSearchVisible(false);setSearch("")}}>Details </Link>
+                      setSearchVisible(false); setSearch("")
+                    }}>Details </Link>
                   </div>
                 })
               }

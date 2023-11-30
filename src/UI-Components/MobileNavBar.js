@@ -65,6 +65,7 @@ function MobileNavBar() {
           </div>
 
         </div>
+
         <NavLink onClick={handleSideNavItemClick} className='navItem' to={'/'}> Home</NavLink>
         <NavLink onClick={handleSideNavItemClick} className='navItem' to={`products/mobile`}> Mobile</NavLink>
         <NavLink onClick={handleSideNavItemClick} className='navItem' to={`products/laptop`}> Laptop</NavLink>
