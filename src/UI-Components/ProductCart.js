@@ -34,7 +34,7 @@ function ProductCart() {
 
   return (
     < >
-     <ToastContainer
+      <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
@@ -47,49 +47,55 @@ function ProductCart() {
         theme="light"
       />
       {
-        cartItems.length <= 0 ? <p className='emptyCartMessage'>Cart is Empty</p> :
-          <div className='cartItems--Container'>
-            <div className='cartItemBox'>
-              {cartItems.map((items) => {
-                totalCartPrice += items.Dprice * items.cartQuantity;
-                totalProducts += items.cartQuantity;
-                return <React.Fragment key={items.id}>
-                  <div className="itemBox">
+        // cartItems.length <= 0 ? <p className='emptyCartMessage'>Cart is Empty</p> :
+        <div className='cartItems--Container'>
+          {
+            cartItems.length <= 0 ? <p className='emptyCartMessage'>Cart is Empty</p> : <>
 
-                    <div className="itemPictureContainer">
-                      <img src={items.images[0]} alt="productImage" className='itemPicture' />
-                    </div>
+              <div className='cartItemBox'>
+                {cartItems.map((items) => {
+                  totalCartPrice += items.Dprice * items.cartQuantity;
+                  totalProducts += items.cartQuantity;
+                  return <React.Fragment key={items.id}>
+                    <div className="itemBox">
 
-                    <div className="itemDetailsContainer">
-
-                      <p className="itemBox--itemPrice">₹ {items.Dprice}</p>
-
-                      <div className="ItemquantityContainer">
-                        <button className='quantityButton' onClick={() => handleDecrementQuantity(items.id)}>-</button>
-                        <span className='itemQuantity'>{items.cartQuantity}</span>
-                        <button className='quantityButton' onClick={() => handleIncrementQuantity(items.id)}>+</button>
+                      <div className="itemPictureContainer">
+                        <img src={items.images[0]} alt="productImage" className='itemPicture' />
                       </div>
 
-                      <p className="itemToalPrice">Item Price <span className='ToalPrice'>₹{items.Dprice * items.cartQuantity}</span></p>
-                      <button className='removeFromCartButton' onClick={() => handleRemoveItemClick(items.id)}>Remove</button>
+                      <div className="itemDetailsContainer">
+
+                        <p className="itemBox--itemPrice">₹ {items.Dprice}</p>
+
+                        <div className="ItemquantityContainer">
+                          <button className='quantityButton' onClick={() => handleDecrementQuantity(items.id)}>-</button>
+                          <span className='itemQuantity'>{items.cartQuantity}</span>
+                          <button className='quantityButton' onClick={() => handleIncrementQuantity(items.id)}>+</button>
+                        </div>
+
+                        <p className="itemToalPrice">Item Price <span className='ToalPrice'>₹{items.Dprice * items.cartQuantity}</span></p>
+                        <button className='removeFromCartButton' onClick={() => handleRemoveItemClick(items.id)}>Remove</button>
+                      </div>
+
                     </div>
+                    <hr className='hrLine' />
+                  </React.Fragment>
+                })}
+              </div>
 
-                  </div>
-                  <hr className='hrLine' />
-                </React.Fragment>
-              })}
-            </div>
+              <div className='cartItem-PriceBox'>
+                <h3 className='PriceBox--heading'>Price Details</h3>
+                <p className="PriceBox-Items">Total Items <span className="PriceBox-Items-Label">{totalProducts}</span></p>
+                <p className="PriceBox-Items">SubTotal <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
+                <p className="PriceBox-Items">Shipping Fee <span className="PriceBox-Items-Label">₹ 0</span></p>
+                <p className="PriceBox-Items">Tax <span className="PriceBox-Items-Label">₹ 0</span></p>
+                <p className="PriceBox-Items">Total Ammount <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
+                <button className='checkOutButton'>Check Out</button>
+              </div>
+            </>
+          }
 
-            <div className='cartItem-PriceBox'>
-              <h3 className='PriceBox--heading'>Price Details</h3>
-              <p className="PriceBox-Items">Total Items <span className="PriceBox-Items-Label">{totalProducts}</span></p>
-              <p className="PriceBox-Items">SubTotal <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
-              <p className="PriceBox-Items">Shipping Fee <span className="PriceBox-Items-Label">₹ 0</span></p>
-              <p className="PriceBox-Items">Tax <span className="PriceBox-Items-Label">₹ 0</span></p>
-              <p className="PriceBox-Items">Total Ammount <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
-              <button className='checkOutButton'>Check Out</button>
-            </div>
-          </div>
+        </div>
       }
     </>
   )

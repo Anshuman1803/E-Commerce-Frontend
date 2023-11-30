@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+
 let featuresProduct = [
 
     {
@@ -95,6 +96,40 @@ let featuresProduct = [
 
     },
 
+    {
+        "id": 55,
+        "title": "JBL Tour One M2 Adaptive Noise Cancelling Over-Ear Headphones,Spatial Sound,Personi-Fi 2.0,Smart Ambient,50Hrs Playtime,Bt 5.3 Le,Quick Charge,Multi Point Conectivity Built-in Alexa (Black),Bluetooth",
+        "discountPercentage": 43,
+        "rating": "4.0",
+        "brand": "Jbl",
+        "category": "headphone",
+
+        "images": "https://m.media-amazon.com/images/I/61d2SD59OTL._SY450_.jpg",
+    },
+
+    {
+        "id": 63,
+        "title": "pTron Newly Launched Zenbuds Ultima ANC Earbuds, 35dB Active Noise Cancellation TWS, Transparency Mode, Quad Mic TruTalk ENC Calls, 50Hrs Playtime & in-Ear Bluetooth 5.3 Wireless Headphones (Blue)",
+        "discountPercentage": 67,
+        "rating": "4.0",
+        "brand": "pTron",
+        "category": "headphone",
+
+        "images":   "https://m.media-amazon.com/images/I/5177hI6-fyL._SX679_.jpg",
+    },
+
+    
+    {
+        "id": 66,
+        "title": "pTron Pride Lite HBE (High Bass Earphones) in Ear Wired Earphones with Mic, 10mm Powerful Driver for Stereo Audio, Noise Cancelling Headset with 1.2m Tangle-Free Cable & 3.5mm Aux - (Blue)",
+        "discountPercentage": 78,
+        "rating": "3.5",
+        "brand": "pTron",
+        "category": "headphone",
+        "images":  "https://m.media-amazon.com/images/I/51yB+3-eJwL._SX522_.jpg",
+    },
+
+
 ];
 const FeaturedSlider = () => {
 
@@ -109,7 +144,7 @@ const FeaturedSlider = () => {
                     <img src={product.images} alt="" className={`${product.category}Image CommonImage`} />
                     <span className='productRatingLabel'>{product.rating}<i className="fa-solid fa-star"></i></span>
                     <div className="productDetailsContainer">
-                        <p className="productTitle">{product.title.slice(0, 20)}...</p>
+                        <p className="productTitle">{product.title.slice(0, 30)}...</p>
 
                         <div className="productPriceBox">
                             <span className="DiscountPercentage">{product.discountPercentage}%off</span>

@@ -1482,7 +1482,7 @@ svg {
 
 
 .App-Footer {
-    background-color: #b89a7059;
+    background-color: rgba(173, 216, 230, 0.637);
     height: 180px;
     position: relative;
     z-index: 1;
