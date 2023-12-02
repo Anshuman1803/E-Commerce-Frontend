@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
+import { useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseQuantity, decreaseQuantity, removeProduct, calTotalAmmount } from '../Slice/ReduxCartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 
 
 function ProductCart() {
+  const navigateTo = useNavigate()
   const { cartItems } = useSelector((state) => state.cart);
   const { isLoggedIn } = useSelector((state) => state.User);
   const dispatch = useDispatch();
@@ -103,7 +105,7 @@ dispatch(calTotalAmmount())
           }
           </> : <>
           <p >Your Are Not Authenticated to see the cart</p>
-          <button className='checkOutButton'>Log in</button>
+          <button className='checkOutButton' onClick={()=> navigateTo("/user/login")}>Log in</button>
           </>
          }
 
