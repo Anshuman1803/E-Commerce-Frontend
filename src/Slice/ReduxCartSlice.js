@@ -11,18 +11,16 @@ const ReduxCartSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state, action) {
-            console.log(action)
             const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
 
             if (itemIndex >= 0) {
-                state.cartItems[itemIndex].itemQuantity += 1;
+                state.cartItems[itemIndex].cartQuantity += 1;
             } else {
                 const tempProduct = { ...action.payload, cartQuantity: 1 };
                 state.cartItems.push(tempProduct);
                 state.cartTotalQuantity++;
             }
             localStorage.setItem("items", JSON.stringify(state.cartItems));
-            localStorage.setItem("userID", action.payload.CurrentUser.User[0].userEmail);
         },
 
         increaseQuantity(state, action) {
@@ -48,23 +46,23 @@ const ReduxCartSlice = createSlice({
         },
 
         calTotalAmmount(state, action) {
-            // let { totalAmmount, quantity } = state.cartItems[0].product.reduce(
-            //     (cartCount, cartItem) => {
-            //         const { price, cartQuantity } = cartItem;
-            //         const totalPrice = price * cartQuantity;
+            let { totalAmmount, quantity } = state.cartItems.reduce(
+                (cartCount, cartItem) => {
+                    const { price, cartQuantity } = cartItem;
+                    const totalPrice = price * cartQuantity;
 
-            //         cartCount.totalAmmount += totalPrice;
-            //         cartCount.quantity += cartQuantity;
+                    cartCount.totalAmmount += totalPrice;
+                    cartCount.quantity += cartQuantity;
 
-            //         return cartCount;
-            //     },
-            //     {
-            //         totalAmmount: 0,
-            //         quantity: 0,
-            //     }
-            // );
-            // state.cartTotalQuantity = quantity
-            // state.cartTotalAmount = totalAmmount
+                    return cartCount;
+                },
+                {
+                    totalAmmount: 0,
+                    quantity: 0,
+                }
+            );
+            state.cartTotalQuantity = quantity
+            state.cartTotalAmount = totalAmmount
         }
     }
 });
