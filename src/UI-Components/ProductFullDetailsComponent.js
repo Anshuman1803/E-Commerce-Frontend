@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 function ProductFullDetailsComponent() {
-  const { isLoggedIn } = useSelector((state) => state.User);
+  const { isLoggedIn, CurrentUser } = useSelector((state) => state.User);
   const [currentImage, setCurrentImage] = useState("");
   const ProductID = useParams().title.split("-")[1];
   const [currentProduct, setCurrentProduct] = useState([]);
@@ -38,7 +38,7 @@ function ProductFullDetailsComponent() {
         progress: undefined,
         theme: "light",
       });
-      dispatch(addToCart(product))
+      dispatch(addToCart({product,CurrentUser}))
     } else {
       toast.error('Permission Denied! First Sign In', {
         position: "top-center",

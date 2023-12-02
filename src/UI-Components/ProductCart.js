@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { increaseQuantity, decreaseQuantity, removeProduct } from '../Slice/ReduxCartSlice';
+import { increaseQuantity, decreaseQuantity, removeProduct, calTotalAmmount } from '../Slice/ReduxCartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -9,7 +9,7 @@ function ProductCart() {
   const dispatch = useDispatch();
   let totalCartPrice = 0;
   let totalProducts = 0;
-
+console.log(cartItems)
 
   const handleIncrementQuantity = (id) => {
     dispatch(increaseQuantity({ "id": id }))
@@ -31,6 +31,9 @@ function ProductCart() {
       theme: "light",
     });
   }
+  useEffect(()=>{
+dispatch(calTotalAmmount())
+  })
 
   return (
     < >
@@ -54,18 +57,18 @@ function ProductCart() {
 
               <div className='cartItemBox'>
                 {cartItems.map((items) => {
-                  totalCartPrice += items.Dprice * items.cartQuantity;
+                  totalCartPrice += items.product.Dprice * items.cartQuantity;
                   totalProducts += items.cartQuantity;
-                  return <React.Fragment key={items.id}>
+                  return <React.Fragment key={items.product.id}>
                     <div className="itemBox">
 
                       <div className="itemPictureContainer">
-                        <img src={items.images[0]} alt="productImage" className='itemPicture' />
+                        <img src={items.product.images[0]} alt="productImage" className='itemPicture' />
                       </div>
 
                       <div className="itemDetailsContainer">
 
-                        <p className="itemBox--itemPrice">₹ {items.Dprice}</p>
+                        <p className="itemBox--itemPrice">₹ {items.product.Dprice}</p>
 
                         <div className="ItemquantityContainer">
                           <button className='quantityButton' onClick={() => handleDecrementQuantity(items.id)}>-</button>
@@ -73,8 +76,8 @@ function ProductCart() {
                           <button className='quantityButton' onClick={() => handleIncrementQuantity(items.id)}>+</button>
                         </div>
 
-                        <p className="itemToalPrice">Item Price <span className='ToalPrice'>₹{items.Dprice * items.cartQuantity}</span></p>
-                        <button className='removeFromCartButton' onClick={() => handleRemoveItemClick(items.id)}>Remove</button>
+                        <p className="itemToalPrice">Item Price <span className='ToalPrice'>₹{items.product.Dprice * items.cartQuantity}</span></p>
+                        <button className='removeFromCartButton' onClick={() => handleRemoveItemClick(items.product.id)}>Remove</button>
                       </div>
 
                     </div>
