@@ -33,7 +33,7 @@ function HeaderComponent() {
         });
       } else {
         setSearchVisible(true);
-        axios(`http://localhost:5000/search/${search}`).then((response) => {
+        axios(`https://ecom-backend-t7c9.onrender.com/search/${search}`).then((response) => {
           setSearctProduct(response.data)
         });
       }

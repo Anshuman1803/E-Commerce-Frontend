@@ -29,7 +29,7 @@ function HomeComponent() {
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get("http://localhost:5000/").then((response) => {
+    axios.get("https://ecom-backend-t7c9.onrender.com/").then((response) => {
       setProductData(response.data);
       setIsLoading(false)
     });
