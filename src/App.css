@@ -1795,6 +1795,13 @@ svg {
       .FooterSIcon {
         font-size: 20px;
       }
+      .itemBox{
+        height: fit-content;
+        flex-direction: column;
+      }
+      .itemDetailsContainer {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -1856,5 +1863,17 @@ svg {
         grid-template-columns: repeat(2, 1fr);
         justify-content: end;
       }
-    
+      .itemDetailsContainer {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+    }
+    .ItemquantityContainer{
+        width: 100%;
+    }
+    .cartItem-PriceBox{
+        width: 100%;
+    }
 }

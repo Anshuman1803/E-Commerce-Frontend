@@ -104,7 +104,6 @@ dispatch(calTotalAmmount())
             </>
           }
           </> : <>
-          <p >Your Are Not Authenticated to see the cart</p>
           <button className='checkOutButton' onClick={()=> navigateTo("/user/login")}>Log in</button>
           </>
          }
