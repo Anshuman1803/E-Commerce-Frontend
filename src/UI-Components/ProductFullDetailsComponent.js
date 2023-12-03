@@ -18,7 +18,7 @@ function ProductFullDetailsComponent() {
 
   useEffect(() => {
     setIsLoading(true)
-    axios.get(`https://ecom-backend-t7c9.onrender.com/${ProductID}`).then((response) => {
+    axios.get(`https://ecom-backend-t7c9.onrender.com/product/${ProductID}`).then((response) => {
       setCurrentProduct(response.data);
       setCurrentImage(response.data[0].images[0])
       setIsLoading(false);
