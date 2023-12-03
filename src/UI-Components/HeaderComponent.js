@@ -14,7 +14,6 @@ function HeaderComponent() {
   const { CurrentUser, isLoggedIn } = useSelector((state) => state.User);
   const dispatch = useDispatch();
 
-
   const handleOnSearchInput = (e) => {
     setSearch(e.target.value);
   }
@@ -69,7 +68,6 @@ function HeaderComponent() {
 
         <div className="searchContainer">
           <input type="text" name='SearctProduct' id='SearchProduct' placeholder='Search Product By Brand Name' onChange={handleOnSearchInput} onKeyDown={handleEnterKey} value={search} />
-          {/* <button className='searchProductBtn' onClick={handleSearchButtonClick}><i className="fa-solid fa-magnifying-glass searchProductBtnIcon"></i></button> */}
         </div>
 
         <div className="userContainer">
