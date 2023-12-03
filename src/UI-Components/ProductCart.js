@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { increaseQuantity, decreaseQuantity, removeProduct, calTotalAmmount } from '../Slice/ReduxCartSlice';
 import { ToastContainer, toast } from 'react-toastify';
@@ -34,8 +34,8 @@ function ProductCart() {
       theme: "light",
     });
   }
-  useEffect(()=>{
-dispatch(calTotalAmmount())
+  useEffect(() => {
+    dispatch(calTotalAmmount())
   })
 
   return (
@@ -55,58 +55,58 @@ dispatch(calTotalAmmount())
       {
         // cartItems.length <= 0 ? <p className='emptyCartMessage'>Cart is Empty</p> :
         <div className='cartItems--Container'>
-         {
-          isLoggedIn ? <>
-          
           {
-            cartItems.length <= 0 ? <p className='emptyCartMessage'>Cart is Empty</p> : <>
+            isLoggedIn ? <>
 
-              <div className='cartItemBox'>
-                {cartItems.map((items) => {
-                  totalCartPrice += items.Dprice * items.cartQuantity;
-                  totalProducts += items.cartQuantity;
-                  return <React.Fragment key={items.id}>
-                    <div className="itemBox">
+              {
+                cartItems.length <= 0 ? <p className='emptyCartMessage'>Cart is Empty</p> : <>
 
-                      <div className="itemPictureContainer">
-                        <img src={items.images[0]} alt="productImage" className='itemPicture' />
-                      </div>
+                  <div className='cartItemBox'>
+                    {cartItems.map((items) => {
+                      totalCartPrice += items.Dprice * items.cartQuantity;
+                      totalProducts += items.cartQuantity;
+                      return <React.Fragment key={items.id}>
+                        <div className="itemBox">
 
-                      <div className="itemDetailsContainer">
+                          <div className="itemPictureContainer">
+                            <img src={items.images && items.images[0]} alt="productImage" className='itemPicture' />
+                          </div>
 
-                        <p className="itemBox--itemPrice">₹ {items.Dprice}</p>
+                          <div className="itemDetailsContainer">
 
-                        <div className="ItemquantityContainer">
-                          <button className='quantityButton' onClick={() => handleDecrementQuantity(items.id)}>-</button>
-                          <span className='itemQuantity'>{items.cartQuantity}</span>
-                          <button className='quantityButton' onClick={() => handleIncrementQuantity(items.id)}>+</button>
+                            <p className="itemBox--itemPrice">₹ {items.Dprice}</p>
+
+                            <div className="ItemquantityContainer">
+                              <button className='quantityButton' onClick={() => handleDecrementQuantity(items.id)}>-</button>
+                              <span className='itemQuantity'>{items.cartQuantity}</span>
+                              <button className='quantityButton' onClick={() => handleIncrementQuantity(items.id)}>+</button>
+                            </div>
+
+                            <p className="itemToalPrice">Item Price <span className='ToalPrice'>₹{items.Dprice * items.cartQuantity}</span></p>
+                            <button className='removeFromCartButton' onClick={() => handleRemoveItemClick(items.id)}>Remove</button>
+                          </div>
+
                         </div>
+                        <hr className='hrLine' />
+                      </React.Fragment>
+                    })}
+                  </div>
 
-                        <p className="itemToalPrice">Item Price <span className='ToalPrice'>₹{items.Dprice * items.cartQuantity}</span></p>
-                        <button className='removeFromCartButton' onClick={() => handleRemoveItemClick(items.id)}>Remove</button>
-                      </div>
-
-                    </div>
-                    <hr className='hrLine' />
-                  </React.Fragment>
-                })}
-              </div>
-
-              <div className='cartItem-PriceBox'>
-                <h3 className='PriceBox--heading'>Price Details</h3>
-                <p className="PriceBox-Items">Total Items <span className="PriceBox-Items-Label">{totalProducts}</span></p>
-                <p className="PriceBox-Items">SubTotal <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
-                <p className="PriceBox-Items">Shipping Fee <span className="PriceBox-Items-Label">₹ 0</span></p>
-                <p className="PriceBox-Items">Tax <span className="PriceBox-Items-Label">₹ 0</span></p>
-                <p className="PriceBox-Items">Total Ammount <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
-                <button className='checkOutButton'>Check Out</button>
-              </div>
+                  <div className='cartItem-PriceBox'>
+                    <h3 className='PriceBox--heading'>Price Details</h3>
+                    <p className="PriceBox-Items">Total Items <span className="PriceBox-Items-Label">{totalProducts}</span></p>
+                    <p className="PriceBox-Items">SubTotal <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
+                    <p className="PriceBox-Items">Shipping Fee <span className="PriceBox-Items-Label">₹ 0</span></p>
+                    <p className="PriceBox-Items">Tax <span className="PriceBox-Items-Label">₹ 0</span></p>
+                    <p className="PriceBox-Items">Total Ammount <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
+                    <button className='checkOutButton'>Check Out</button>
+                  </div>
+                </>
+              }
+            </> : <>
+              <button className='checkOutButton' onClick={() => navigateTo("/user/login")}>Log in</button>
             </>
           }
-          </> : <>
-          <button className='checkOutButton' onClick={()=> navigateTo("/user/login")}>Log in</button>
-          </>
-         }
 
         </div>
       }
