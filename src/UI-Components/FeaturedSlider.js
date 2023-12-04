@@ -144,7 +144,7 @@ const FeaturedSlider = () => {
                     <img src={product.images} alt="" className={`${product.category}Image CommonImage`} />
                     <span className='productRatingLabel'>{product.rating}<i className="fa-solid fa-star"></i></span>
                     <div className="productDetailsContainer">
-                        <p className="productTitle">{product.title.slice(0, 30)}...</p>
+                        <p className="productTitle">{product.title.slice(0, 20)}...</p>
 
                         <div className="productPriceBox">
                             <span className="DiscountPercentage">{product.discountPercentage}%off</span>
