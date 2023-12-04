@@ -37,7 +37,6 @@ function PaymentButtons() {
                 return response.json()
             });
     };
-    console.log(onApprove)
     return (
         <PayPalButtons className="paypalButtons"
             createOrder={(data, actions) => createOrder(data, actions)}

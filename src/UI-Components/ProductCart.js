@@ -39,7 +39,7 @@ function ProductCart() {
   }
 
   useEffect(() => {
-    dispatch(calTotalAmmount())
+    dispatch(calTotalAmmount({totalCartPrice, totalProducts}))
   });
 
   const handleCheckout = () => {

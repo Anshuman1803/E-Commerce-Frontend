@@ -12,7 +12,7 @@ const ReduxCartSlice = createSlice({
     reducers: {
         addToCart(state, action) {
             const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id);
-
+            
             if (itemIndex >= 0) {
                 state.cartItems[itemIndex].cartQuantity += 1;
             } else {
@@ -21,6 +21,7 @@ const ReduxCartSlice = createSlice({
                 state.cartTotalQuantity++;
             }
             localStorage.setItem("items", JSON.stringify(state.cartItems));
+           
         },
 
         increaseQuantity(state, action) {
@@ -52,23 +53,8 @@ const ReduxCartSlice = createSlice({
         },
 
         calTotalAmmount(state, action) {
-            let { totalAmmount, quantity } = state.cartItems.reduce(
-                (cartCount, cartItem) => {
-                    const { price, cartQuantity } = cartItem;
-                    const totalPrice = price * cartQuantity;
-
-                    cartCount.totalAmmount += totalPrice;
-                    cartCount.quantity += cartQuantity;
-
-                    return cartCount;
-                },
-                {
-                    totalAmmount: 0,
-                    quantity: 0,
-                }
-            );
-            state.cartTotalQuantity = quantity
-            state.cartTotalAmount = totalAmmount
+            state.cartTotalQuantity = action.payload.totalProducts;
+            state.cartTotalAmount = action.payload.totalCartPrice;
         }
     }
 });

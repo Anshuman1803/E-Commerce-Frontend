@@ -76,6 +76,7 @@ function HeaderComponent() {
             <h2 className='UserName'>{CurrentUser?.User[0] ? CurrentUser.User[0].userName.slice(0, 1) : "U"}</h2>
             <span className='itemCountLabel'>{isLoggedIn ? cartTotalQuantity : 0}</span>
           </div>
+          
           <ul className="userDropDown">
 
 
