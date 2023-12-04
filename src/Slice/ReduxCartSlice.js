@@ -45,6 +45,12 @@ const ReduxCartSlice = createSlice({
             localStorage.setItem("items", JSON.stringify(state.cartItems));
         },
 
+        checkoutProcess(state, action) {
+            state.cartItems = [];
+            state.cartTotalQuantity = 0;
+            localStorage.setItem("items", JSON.stringify(state.cartItems));
+        },
+
         calTotalAmmount(state, action) {
             let { totalAmmount, quantity } = state.cartItems.reduce(
                 (cartCount, cartItem) => {
@@ -67,5 +73,5 @@ const ReduxCartSlice = createSlice({
     }
 });
 
-export const { addToCart, increaseQuantity, decreaseQuantity, removeProduct, calTotalAmmount } = ReduxCartSlice.actions
+export const { addToCart, increaseQuantity, decreaseQuantity, removeProduct, calTotalAmmount,checkoutProcess } = ReduxCartSlice.actions
 export default ReduxCartSlice.reducer

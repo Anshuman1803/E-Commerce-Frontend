@@ -21,6 +21,7 @@ function ProductCart() {
   const handleDecrementQuantity = (id) => {
     dispatch(decreaseQuantity({ "id": id }))
   }
+
   const handleRemoveItemClick = (id) => {
     dispatch(removeProduct(id));
     toast.success('Item Deleted Successfully', {
@@ -34,6 +35,7 @@ function ProductCart() {
       theme: "light",
     });
   }
+
   useEffect(() => {
     dispatch(calTotalAmmount())
   })
@@ -99,7 +101,7 @@ function ProductCart() {
                     <p className="PriceBox-Items">Shipping Fee <span className="PriceBox-Items-Label">₹ 0</span></p>
                     <p className="PriceBox-Items">Tax <span className="PriceBox-Items-Label">₹ 0</span></p>
                     <p className="PriceBox-Items">Total Ammount <span className="PriceBox-Items-Label">₹ {totalCartPrice}</span></p>
-                    <button className='checkOutButton'>Check Out</button>
+                    <button className='checkOutButton' onClick={()=> navigateTo("/cart/payment")}>Check Out</button>
                   </div>
                 </>
               }

@@ -1522,6 +1522,58 @@ svg {
     color: #c44501;
   }
 
+.paymentPageContainer{
+    background: url("https://static.vecteezy.com/system/resources/previews/001/879/540/non_2x/experience-of-buying-goods-online-with-fast-delivery-buy-now-and-shop-right-up-e-commerce-technology-illustration-concept-for-landing-page-web-ui-banner-flyer-poster-template-background-free-vector.jpg");
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.PaymentButton{
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    width: 200px;
+    padding: 0.5em;
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.PaymentButton:nth-child(2){
+    background-color: #5cb85c;
+}
+.PaymentButton:nth-child(1):hover{
+    background-color: rgb(213, 80, 56);
+}
+.PaymentButton:nth-child(2):hover{
+    background-color: #419741;
+}
+.successPageContainer{
+    background-image: url("https://i.stack.imgur.com/YbIni.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+    position: relative;
+}
+.shopMore{
+    position: relative;
+    top: 130px;
+}
+
 @media screen and (max-width: 901px) {
     .SliderContainer {
         height: 300px;
@@ -1814,6 +1866,14 @@ svg {
     .emptyCartMessage {
         font-size: 30px;
         top: 50%;
+    }
+    .paymentPageContainer{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .successPageContainer{
+        background-position: center;
+        background-size: cover;
     }
 }
 
