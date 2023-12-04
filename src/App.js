@@ -10,7 +10,7 @@ import UserLogin from "./UserProfileAuth/UserLogin";
 import UserRegister from "./UserProfileAuth/UserRegister";
 import MobileNavBar from "./UI-Components/MobileNavBar";
 import FooterComponent from "./UI-Components/FooterComponent";
-import PaymentPage from "./PaymentIntergrations/PaymentPage";
+import PaymentSuccess from "./PaymentIntergrations/PaymentSuccess";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path="products/:category" element={<ProductPage />} />
         <Route path="/product/:title" element={<ProductFullDetailsComponent />} />
         <Route path="/cart" element={<ProductCart />} />
-        <Route path="/cart/payment" element= {<PaymentPage/>}/>
+        <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/user" element={<UserForm />}>
           <Route path="/user/register" element={<UserRegister />} />
           <Route path="/user/login" element={<UserLogin />} />
